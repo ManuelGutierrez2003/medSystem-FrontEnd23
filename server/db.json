@@ -35,6 +35,14 @@
           "appointmentHour": "09:00",
           "inTreatment": "true",
           "moreInfo": ""
+        },
+        {
+          "patientName": "John Doe",
+          "appointmentDay": "2024-10-10",
+          "appointmentHour": "10:00",
+          "inTreatment": false,
+          "moreInfo": "prueba2323",
+          "requestHistory": []
         }
       ]
     },
@@ -168,6 +176,14 @@
           "appointmentHour": "14:30",
           "inTreatment": "true",
           "moreInfo": ""
+        },
+        {
+          "patientName": "John Doe",
+          "appointmentDay": "2024-10-10",
+          "appointmentHour": "10:00",
+          "inTreatment": false,
+          "moreInfo": "prueba2323",
+          "requestHistory": []
         }
       ]
     }
@@ -257,7 +273,7 @@
       "appointmentDay": "2024-01-01",
       "appointmentHour": "12:00",
       "inTreatment": "false",
-      "moreInfo": "",
+      "moreInfo": "prueba1",
       "requestHistory": [
         {
           "historyId": "RH01",
@@ -366,6 +382,15 @@
           "historyDate": "2024-04-05"
         }
       ]
+    },
+    {
+      "patientName": "John Doe",
+      "appointmentDay": "2024-10-10",
+      "appointmentHour": "10:00",
+      "inTreatment": false,
+      "moreInfo": "prueba2323",
+      "requestHistory": [],
+      "id": 9
     }
   ],
   "results": [

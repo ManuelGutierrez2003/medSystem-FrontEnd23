@@ -4,6 +4,7 @@ import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {DoctorHistory} from "../../model/doctor/doctor-history.entity";
+import {PatientHistory} from "../../model/patient/patient-history";
 
 
 @Component({
@@ -12,15 +13,16 @@ import {DoctorHistory} from "../../model/doctor/doctor-history.entity";
   styleUrl: './doctor-request-history.component.css'
 })
 export class DoctorRequestHistoryComponent {
-  historyList !: DoctorHistory[];
+  historyList !: PatientHistory[];
   dataSource :any;
   displayedColumns = ['historyId','doctorName', 'historyReason', 'historyDate'];
   @ViewChild(MatPaginator) paginator !: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  constructor(private service:BaseService<DoctorHistory>) {
+
+  constructor(private service:BaseService<PatientHistory>) {
     this.service.getAppointmentsWithHistory().subscribe(res => {
       this.historyList = res.flatMap(appointment => appointment.requestHistory);
-      this.dataSource = new MatTableDataSource<DoctorHistory>(this.historyList);
+      this.dataSource = new MatTableDataSource<PatientHistory>(this.historyList);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     })

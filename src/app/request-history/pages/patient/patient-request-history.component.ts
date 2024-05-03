@@ -1,17 +1,41 @@
 import {Component, ViewChild, viewChild} from '@angular/core';
 import {BaseService} from "../../../shared/services/base.service";
-import {MatTableDataSource} from "@angular/material/table";
+import {
+  MatCellDef,
+  MatColumnDef,
+  MatHeaderCellDef, MatHeaderRowDef,
+  MatRowDef,
+  MatTable,
+  MatTableDataSource
+} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {PatientHistory} from "../../model/patient/patient-history";
 import {DoctorHistory} from "../../model/doctor/doctor-history.entity";
+import {MatCard, MatCardContent, MatCardFooter, MatCardHeader} from "@angular/material/card";
+import {MatLabel} from "@angular/material/form-field";
 
 
 @Component({
   selector: 'app-request-history',
-  templateUrl: './doctor-request-history.component.html',
+  templateUrl: './patient-request-history.component.html',
   standalone: true,
-  styleUrl: './doctor-request-history.component.css'
+  imports: [
+    MatCardContent,
+    MatCard,
+    MatCardHeader,
+    MatLabel,
+    MatSort,
+    MatTable,
+    MatColumnDef,
+    MatHeaderCellDef,
+    MatCellDef,
+    MatRowDef,
+    MatCardFooter,
+    MatPaginator,
+    MatHeaderRowDef
+  ],
+  styleUrl: './patient-request-history.component.css'
 })
 export class PatientRequestHistoryComponent {
   historyList !: DoctorHistory[];
@@ -19,6 +43,7 @@ export class PatientRequestHistoryComponent {
   displayedColumns = ['patientName','campus', 'speciality', 'doctorName', 'dateTime'];
   @ViewChild(MatPaginator) paginator !: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+
   constructor(private service:BaseService<DoctorHistory>) {
     this.service.getAppointmentsWithHistory().subscribe(res => {
       this.historyList = res.flatMap(appointment => appointment.requestHistory);
